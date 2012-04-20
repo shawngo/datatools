@@ -1,0 +1,8 @@
+name = Datatools
+description = Various tools to compare and format data.
+package = Custom
+core = 6.x
+php = 5.0
+
+version = "6.x-0.1-dev"
+core = "6.x"

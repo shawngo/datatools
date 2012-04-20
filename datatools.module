@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * @file
+ *  Datatools Module file
+ *
+ */
+
+/**
+ * Implements of hook_menu().
+ */
+function datatools_menu() {
+  $items = array();
+  $items['admin/settings/datatools'] = array(
+    'title' => 'Datatools',
+    'description' => 'datatools.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('datatools_list'),
+    'file' => 'datatools.admin.inc',
+    'access arguments' => array('access to datatools'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['admin/settings/datatools/list'] = array(
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+  );
+
+  $items['admin/settings/datatools/sku-to-nid'] = array(
+    'title' => 'SKU to Node IDs',
+    'description' => 'datatools.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('datatools_search_form'),
+    'file' => 'datatools.admin.inc',
+    'access arguments' => array('access to datatools'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+  );
+
+  $items['admin/settings/datatools/taxonomy'] = array(
+    'title' => 'Taxonomy match',
+    'description' => 'datatools.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('datatools_search_taxonomy_form'),
+    'file' => 'datatools.admin.inc',
+    'access arguments' => array('access to datatools'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+  );
+
+  $items['admin/settings/datatools/files'] = array(
+    'title' => 'Find files',
+    'description' => 'datatools.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('datatools_search_filefind_form'),
+    'file' => 'datatools.admin.inc',
+    'access arguments' => array('access to datatools'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 3,
+  );
+
+  $items['admin/settings/datatools/users'] = array(
+    'title' => 'Email search',
+    'description' => 'datatools.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('datatools_search_users_form'),
+    'file' => 'datatools.admin.inc',
+    'access arguments' => array('access to datatools'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 4,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements of hook_nodeapi()
+ */
+function datatools_perm() {
+  return array('access to datatools');
+}
